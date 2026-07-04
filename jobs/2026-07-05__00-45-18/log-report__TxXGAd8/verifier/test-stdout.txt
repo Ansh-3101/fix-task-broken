@@ -1,0 +1,29 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+../tests/test_outputs.py F..                                             [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_total_requests ______________________________
+
+    def test_total_requests():
+        """1. `total_requests` — the total number of log lines (integer)."""
+        report_path = Path("/app/report.json")
+        assert report_path.exists(), "no report.json found"
+        with open(report_path) as f:
+            data = json.load(f)
+        assert "total_requests" in data, "Missing 'total_requests' key"
+>       assert data["total_requests"] == 6, f"Expected 6 total requests, got {data['total_requests']}"
+E       AssertionError: Expected 6 total requests, got 999
+E       assert 999 == 6
+
+/tests/test_outputs.py:12: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_unique_ips
+PASSED ../tests/test_outputs.py::test_top_path
+FAILED ../tests/test_outputs.py::test_total_requests - AssertionError: Expect...
+========================= 1 failed, 2 passed in 0.02s ==========================

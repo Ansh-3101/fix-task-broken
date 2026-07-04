@@ -1,0 +1,50 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+../tests/test_outputs.py FFF                                             [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_total_requests ______________________________
+
+    def test_total_requests():
+        """1. `total_requests` — the total number of log lines (integer)."""
+        report_path = Path("/app/report.json")
+>       assert report_path.exists(), "no report.json found"
+E       AssertionError: no report.json found
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/app/report.json').exists
+
+/tests/test_outputs.py:8: AssertionError
+_______________________________ test_unique_ips ________________________________
+
+    def test_unique_ips():
+        """2. `unique_ips` — the count of distinct client IP addresses (integer)."""
+        report_path = Path("/app/report.json")
+>       assert report_path.exists(), "no report.json found"
+E       AssertionError: no report.json found
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/app/report.json').exists
+
+/tests/test_outputs.py:18: AssertionError
+________________________________ test_top_path _________________________________
+
+    def test_top_path():
+        """3. `top_path` — the most frequently requested URL path (string)."""
+        report_path = Path("/app/report.json")
+>       assert report_path.exists(), "no report.json found"
+E       AssertionError: no report.json found
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/app/report.json').exists
+
+/tests/test_outputs.py:28: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_total_requests - AssertionError: no rep...
+FAILED ../tests/test_outputs.py::test_unique_ips - AssertionError: no report....
+FAILED ../tests/test_outputs.py::test_top_path - AssertionError: no report.js...
+============================== 3 failed in 0.03s ===============================
